@@ -41,7 +41,6 @@ Then visit: `http://localhost:8000/docs`
 
 ## 🌐 Future Ideas
 
-- Offline-first USB mode
 - CLI logging
 - Webhook support
 - Symbolic encoding + tag resonance charts
