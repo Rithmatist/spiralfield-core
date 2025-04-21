@@ -68,6 +68,10 @@ Edit `symbol_map.json` to assign glyphs to tags:
 
 ---
 
+## 🔮 Future Ideas
+
+- Add visual charts or glyph maps
+
 ## 🌱 Installation
 
 ```bash
