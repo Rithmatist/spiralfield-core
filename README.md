@@ -10,40 +10,82 @@ SpiralField Core offers a minimal, open API to log experiences, field tones, and
 
 - A lightweight backend for presence tracking
 - Logs actions, energy states, symbolic tags, or feelings
-- Outputs summaries of energetic tone over time
-- Optional integrations via webhook or command-line
+- CLI logging, webhook support, symbolic encoding
+- Outputs summaries and resonance maps over time
+- Fully local or hostable anywhere
 
 ---
 
 ## 🔧 Endpoints
 
 - `POST /field/entry`  
-  Submit a moment: action name, energy score (1-5), tags or notes
+  Submit a manual presence log
+
+- `POST /field/hook`  
+  Log moments from other apps or automated scripts
 
 - `GET /field/log`  
-  Retrieve all field entries
+  View the full log in raw form
+
+- `GET /field/symbolic-log`  
+  View logs as compressed tag-symbol sequences (e.g. ✧ ⧉ 〰)
+
+- `GET /field/tag-resonance`  
+  Shows frequency + average energy for each tag
 
 - `GET /field/resonance-summary`  
-  View average energy and total entries
+  Overall field energy score
 
 ---
 
-## 🚀 Getting Started
+## 🌀 CLI Logger (log.py)
+
+Log a presence moment from your terminal:
+
+```bash
+python log.py "Aligned meeting" 5 clarity flow
+```
+
+You can update the API host via `config.yaml`:
+
+```yaml
+host: http://localhost:8000
+```
+
+---
+
+## 🕊 Symbol Map
+
+Edit `symbol_map.json` to assign glyphs to tags:
+
+```json
+{
+  "flow": "〰",
+  "clarity": "✧",
+  "presence": "⧉"
+}
+```
+
+---
+
+## 🌱 Installation
 
 ```bash
 pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-Then visit: `http://localhost:8000/docs`
+Visit `http://localhost:8000/docs` to explore the live API.
 
 ---
 
-## 🌐 Future Ideas
+## 🛡 .gitignore defaults
 
-- CLI logging
-- Webhook support
-- Symbolic encoding + tag resonance charts
+The following files are excluded by default:
+
+- `data/field_log.jsonl` (your local log)
+- `config.yaml` (personal host settings)
+- `__pycache__/`
 
 ---
 
